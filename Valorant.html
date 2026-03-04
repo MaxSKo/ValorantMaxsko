@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VALORANT • Guide + VCT EMEA 2026</title>
+  <meta name="description" content="Site MaxSKo : guide VALORANT + rosters VCT EMEA 2026 (Gentle Mates, Karmine Corp, Vitality)." />
+
+  <style>
+    :root{
+      --bg0:#070A10;
+      --bg1:#0B1020;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.04);
+      --border:rgba(255,255,255,.12);
+      --text:#F4F7FF;
+      --muted:rgba(244,247,255,.70);
+      --valorant:#FF4655;
+      --valorant2:#FF7A84;
+      --accent:#5CF2C2;
+
+      --radius:18px;
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 14% 8%, rgba(255,70,85,.28), transparent 62%),
+        radial-gradient(900px 520px at 86% 16%, rgba(92,242,194,.16), transparent 60%),
+        radial-gradient(1200px 650px at 50% 92%, rgba(255,122,132,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(1150px, 92vw); margin:0 auto; }
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: rgba(7,10,16,.62);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:900;
+      letter-spacing:.3px;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:14px;
+      background: linear-gradient(135deg, var(--valorant), var(--valorant2));
+      box-shadow: 0 0 28px rgba(255,70,85,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark::after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%);
+      transform: rotate(18deg);
+    }
+    .brand small{
+      display:block;
+      margin-top:2px;
+      font-weight:700;
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.2px;
+    }
+
+    .nav-right{ display:flex; align-items:center; gap:10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+    .btn.primary{
+      border: none;
+      background: linear-gradient(135deg, var(--valorant), var(--valorant2));
+      color:#150609;
+    }
+
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+    .chip.active{
+      color: var(--text);
+      border-color: rgba(255,70,85,.45);
+      background: rgba(255,70,85,.12);
+      box-shadow: 0 0 0 3px rgba(255,70,85,.12) inset;
+    }
+
+    main{ padding: 28px 0 40px; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:16px;
+      align-items:stretch;
+      margin-top:14px;
+    }
+    @media (max-width: 950px){ .hero{ grid-template-columns:1fr; } }
+
+    .card{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-inner{ padding:20px; }
+    .subcard{
+      border:1px solid var(--border);
+      background: var(--card2);
+      border-radius: 16px;
+      padding:14px;
+    }
+
+    h1{ margin:0 0 10px; font-size: clamp(28px, 3.6vw, 44px); line-height:1.08; letter-spacing:-.5px; }
+    .lead{ margin:0 0 14px; color:var(--muted); line-height:1.65; font-size:16px; }
+
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 520px){ .kpis{ grid-template-columns:1fr; } }
+    .kpi{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: 16px;
+      padding:12px;
+    }
+    .kpi b{ display:block; font-size:16px; }
+    .kpi span{ display:block; color:var(--muted); font-size:13px; margin-top:2px; }
+
+    .section{
+      margin-top:16px;
+    }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+      margin: 8px 0 12px;
+    }
+    .section-head h2{ margin:0; font-size:20px; letter-spacing:-.2px; }
+    .section-head p{ margin:0; color:var(--muted); }
+
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
+    @media (max-width: 950px){ .grid3{ grid-template-columns:1fr; } }
+
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:13px;
+      font-weight:800;
+    }
+    .tag i{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), rgba(255,255,255,.2));
+      display:inline-block;
+      box-shadow:0 0 18px rgba(92,242,194,.18);
+    }
+
+    .panel{ display:none; }
+    .panel.active{ display:block; }
+
+    .tabs{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin: 10px 0 0;
+    }
+    .tabbtn{
+      padding:9px 10px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight:900;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .tabbtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+    .tabbtn.active{
+      color: var(--text);
+      border-color: rgba(92,242,194,.40);
+      background: rgba(92,242,194,.10);
+      box-shadow: 0 0 0 3px rgba(92,242,194,.10) inset;
+    }
+
+    .list{ margin:10px 0 0; padding:0; list-style:none; }
+    .list li{
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      border-radius: 14px;
+      margin-top:10px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .list strong{ font-weight:950; }
+    .muted{ color: var(--muted); }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .teamcard{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding:16px;
+    }
+    .teamhead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .teamname{
+      font-weight:1000;
+      font-size:18px;
+      letter-spacing:-.2px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .badge{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--valorant), var(--accent));
+      box-shadow: 0 0 18px rgba(255,70,85,.22);
+    }
+
+    footer{
+      margin-top:22px;
+      border-top:1px solid var(--border);
+      padding:18px 0 34px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      border:1px solid var(--border);
+      background: rgba(10,14,24,.88);
+      padding: 10px 12px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      display:none;
+      z-index:999;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <div class="mark" aria-hidden="true"></div>
+          <div>
+            VALORANT • Hub
+            <small>Guide du jeu + VCT EMEA 2026</small>
+          </div>
+        </div>
+
+        <div class="nav-right">
+          <button class="btn" id="copyLinkBtn" title="Copier un lien vers la catégorie">Copier lien</button>
+          <a class="btn primary" href="#vct-2026" title="Aller à VCT 2026">VCT 2026</a>
+        </div>
+      </div>
+
+      <!-- Catégories -->
+      <div class="chips" role="tablist" aria-label="Catégories">
+        <button class="chip active" data-panel="regles" role="tab" aria-selected="true">Règles du jeu</button>
+        <button class="chip" data-panel="modes" role="tab" aria-selected="false">Modes</button>
+        <button class="chip" data-panel="agents" role="tab" aria-selected="false">Agents</button>
+        <button class="chip" data-panel="maps" role="tab" aria-selected="false">Maps</button>
+        <button class="chip" data-panel="tips" role="tab" aria-selected="false">Tips & Compo</button>
+        <button class="chip" data-panel="vct-2026" role="tab" aria-selected="false">VCT EMEA 2026</button>
+      </div>
+
+      <div style="height:14px"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="card-inner">
+          <h1>Un site pour “VALORANT”</h1>
+          <p class="lead">
+            Clique sur une catégorie (règles, modes, agents, maps…) puis explore la partie e-sport :
+            <b>Gentle Mates</b>, <b>Karmine Corp</b> et <b>Vitality</b> sur la saison 2026.
+          </p>
+
+          <div class="kpis">
+            <div class="kpi"><b>100% local</b><span>1 fichier HTML</span></div>
+            <div class="kpi"><b>Boutons / Tabs</b><span>Navigation Fluide</span></div>
+            <div class="kpi"><b>Données équipes</b><span>Roster,..</span></div>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn" id="randomTipBtn">Tip aléatoire</button>
+            <button class="btn" id="themeBtn">Mode “Neon”</button>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="tag"><i></i> Responsive</span>
+            <span class="tag"><i></i> Accessible</span>
+            <span class="tag"><i></i> Fan content</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="subcard">
+            <b>Note</b>
+            <p class="lead" style="margin:8px 0 0;">
+              Ce site n’est pas officiel. Créer par un fan Valorant :
+              <span class="muted">Des mises a jour régulière seront faites</span>
+            </p>
+          </div>
+
+          <div class="subcard" style="margin-top:12px;">
+            <b>Raccourcis</b>
+            <div class="tabs" style="margin-top:10px;">
+              <button class="tabbtn" data-jump="regles">Règles</button>
+              <button class="tabbtn" data-jump="agents">Agents</button>
+              <button class="tabbtn" data-jump="vct-2026">VCT 2026</button>
+            </div>
+          </div>
+
+          <div class="subcard" style="margin-top:12px;">
+            <b>Infos roster</b>
+            <p class="lead" style="margin:8px 0 0;">
+              Les rosters peuvent changer en cours de saison.
+              <span class="muted">Les changements seront changé rapidement</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANELS -->
+    <section class="section">
+
+      <!-- REGLES -->
+      <div class="panel active" id="regles" data-title="Règles du jeu">
+        <div class="section-head">
+          <h2>Règles du jeu</h2>
+          <p>Le “tactical shooter” : info, économie, objectifs.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card"><div class="card-inner">
+            <b>Objectif</b>
+            <p class="lead">Attaque : poser le Spike et le défendre. Défense : empêcher la pose ou désamorcer.</p>
+          </div></div>
+
+          <div class="card"><div class="card-inner">
+            <b>Rounds</b>
+            <p class="lead">Alternance attaque/défense. Gérer le chrono, les rotations et l’info.</p>
+          </div></div>
+
+          <div class="card"><div class="card-inner">
+            <b>Économie</b>
+            <p class="lead">Achats d’armes/armure/compétences. Le “force” (Acheter malgré la pauvereté), “eco” (Economisé pour le prochain round), “full buy” (Vandal/Phantom + Gros shield) font la diff.</p>
+          </div></div>
+        </div>
+
+        <ul class="list">
+          <li><strong>Conditions pour la victoire</strong><span class="muted">Spike explosé / désamorcé / éliminations / temps</span></li>
+          <li><strong>Info</strong><span class="muted">sons, utilitaires, “contact”, timings, fake</span></li>
+          <li><strong>Trade</strong><span class="muted">jouer à 2 : prendre un duel et échanger</span></li>
+        </ul>
+      </div>
+
+      <!-- MODES -->
+      <div class="panel" id="modes" data-title="Modes">
+        <div class="section-head">
+          <h2>Modes</h2>
+          <p>Pour chill, s’entraîner ou tryhard.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card"><div class="card-inner">
+            <b>Non classé</b>
+            <p class="lead">Le mode “classique” sans impact sur ton rang. Parfait pour apprendre le jeu/Gérer la pression d'une game longue (13 round gagnant sans prolongation)</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Classé</b>
+            <p class="lead">Game classé : Rank + MMR caché, tryhard constant pour devenir le meilleur, se finit en 13 round gagnant hors prolongation</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Deathmatch</b>
+            <p class="lead">Aim + routines. Priorité : crosshair placement, strafes, discipline.</p>
+          </div></div>
+        </div>
+
+        <ul class="list">
+          <li><strong>Swiftplay / Spike Rush</strong><span class="muted">Game rapide (5 ou 4 round gagnant sans prolongation), rapide, échauffement</span></li>
+          <li><strong>Custom</strong><span class="muted">Entrainement 1v1, Stratégies, Entrainement Lineup</span></li>
+        </ul>
+      </div>
+
+      <!-- AGENTS -->
+      <div class="panel" id="agents" data-title="Agents">
+        <div class="section-head">
+          <h2>Agents</h2>
+          <p>Rôles & idées de picks.</p>
+        </div>
+
+        <div class="grid3">
+  <div class="card"><div class="card-inner">
+    <b>Duelist</b>
+    <p class="lead">Créer l’espace : dash/entry, prendre le premier contact, casser les setups.</p>
+  </div></div>
+
+  <div class="card"><div class="card-inner">
+    <b>Initiator</b>
+    <p class="lead">Gagner l’info : flashes / reveals / drones pour aider l’entry.</p>
+  </div></div>
+
+  <div class="card"><div class="card-inner">
+    <b>Controller</b>
+    <p class="lead">Fumigènes : couper les lignes, contrôler la map, tempo en post-plant.</p>
+  </div></div>
+
+  <div class="card"><div class="card-inner">
+    <b>Sentinel</b>
+    <p class="lead">Tenir un site : anti-flank, contrôle de zone, pièges, retake plus safe.</p>
+  </div></div>
+</div>
+
+        <div class="card" style="margin-top:12px;">
+          <div class="card-inner">
+            <b>Composition</b>
+            <ul class="list" style="margin-top:10px;">
+              <li><strong>1 Controller</strong><span class="muted">obligatoire sur la plupart des maps</span></li>
+              <li><strong>1 Initiator</strong><span class="muted">pour l’info + flashes</span></li>
+              <li><strong>1 Sentinel</strong><span class="muted">anti-flank + tenue de site</span></li>
+              <li><strong>1–2 Duelists</strong><span class="muted">selon style (double entry ou pas)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPS -->
+      <div class="panel" id="maps" data-title="Maps">
+        <div class="section-head">
+          <h2>Maps</h2>
+          <p>Ce bloc est fait pour tes résumés + callouts.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card"><div class="card-inner">
+            <b>Plan de lecture</b>
+            <p class="lead">1) Control du mid → 2) Side de pression → 3) split / exec.</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Défense</b>
+            <p class="lead">Info + retake. Ne pas donner 1v1. Jouer la montre et l’ulti.</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Attaque</b>
+            <p class="lead">Utilitaires “en chaîne” : info → flash → smoke → entry.</p>
+          </div></div>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <div class="card-inner">
+            <b>Exemple</b>
+            <p class="lead">
+              Bind : Attaque rapide, prise A : 2 shower, 2 short, 1 lurk (sentinel)
+              <span class="muted">Défense : 2 A, 2 B, 1 Spawn (smoker de pref)</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIPS -->
+      <div class="panel" id="tips" data-title="Tips & Compo">
+        <div class="section-head">
+          <h2>Tips & Compo</h2>
+          <p>Des règles simples qui font monter vite.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card"><div class="card-inner">
+            <b>Routine aim</b>
+            <p class="lead">10–15 min : DeathMatch focus constant/ Crosshair placement + micro-strafes + discipline.</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Comms</b>
+            <p class="lead">Court & utile : “2 main”, “Flash droite”, “rotate”, “Go retake.</p>
+          </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Post-plant</b>
+            <p class="lead">Jouer crossfire + ne pas peek solo. Tempo sur le tap + spell.</p>
+          </div></div>
+        </div>
+
+        <ul class="list" id="tipsList"></ul>
+      </div>
+
+      <!-- VCT 2026 -->
+      <div class="panel" id="vct-2026" data-title="VCT EMEA 2026">
+        <div class="section-head">
+          <h2>VCT EMEA 2026 • Focus FR</h2>
+          <p>Gentle Mates • Karmine Corp • Vitality (rosters)</p>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <div class="teamhead">
+              <div>
+                <div class="teamname"><span class="badge"></span> Choisis une équipe</div>
+                <div class="muted" style="margin-top:6px;">
+                  Clique pour afficher le roster + staff (si renseigné).
+                </div>
+              </div>
+              <div class="tabs" role="tablist" aria-label="Équipes VCT 2026">
+                <button class="tabbtn active" data-team="g2m">Gentle Mates</button>
+                <button class="tabbtn" data-team="kc">Karmine Corp</button>
+                <button class="tabbtn" data-team="vit">Vitality</button>
+              </div>
+            </div>
+
+            <div class="teamcard" id="teamBox">
+              <!-- Injecté via JS -->
+            </div>
+
+            <div class="subcard" style="margin-top:12px;">
+              <b>Idées de contenu à ajouter</b>
+              <ul class="list" style="margin-top:10px;">
+                <li><strong>Résultats</strong><span class="muted">Kickoff / Stage 1 / Stage 2 / Masters / Champions</span></li>
+                <li><strong>Rôles</strong><span class="muted">qui joue entry / IGL / controller / senti…</span></li>
+                <li><strong>Style</strong><span class="muted">agressif / slow default / heavy util / exec</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px;">
+          <div class="card-inner">
+            <b>Crédit données</b>
+            <p class="lead" style="margin:8px 0 0;">
+              Sources typiques : pages équipes / annonces.
+              <span class="muted">Le code est conçu pour que tu modifies le JSON “teamsData” en 30 secondes.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <div class="container" style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <div>© <span id="year"></span> • Site fait par un Fan</div>
+        <div class="muted">Astuce : tu peux partager une section avec l’URL (#regles, #vct-2026, …)</div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ===== UTIL =====
+    const $ = (q, root=document) => root.querySelector(q);
+    const $$ = (q, root=document) => Array.from(root.querySelectorAll(q));
+
+    const toast = $("#toast");
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(window.__toastT);
+      window.__toastT = setTimeout(()=> toast.style.display="none", 2200);
+    }
+
+    // ===== YEAR =====
+    $("#year").textContent = new Date().getFullYear();
+
+    // ===== DATA (ROSTERS) =====
+    // Modifie ici si le mercato change :
+    const teamsData = {
+      g2m: {
+        name: "Gentle Mates",
+        league: "VCT EMEA 2026",
+        note: "Roster VCT EMEA (début 2026).",
+        roster: [
+          { nick:"Minny", real:"Patrik Hušek", role:"Sentinelle" },
+          { nick:"marteen", real:"Martin Pátek", role:"Duelist" },
+          { nick:"bipo", real:"Taranvir Singh", role:"Duelist" },
+          { nick:"starxo", real:"Patryk Kopczyński", role:"Capitaine/Initator" },
+          { nick:"GLYPH", real:"Conner Garcia", role:"Controller" },
+        ],
+        staff: [
+          { nick:"pakko", role:"Head Coach" },
+          { nick:"KUNDIKUNDI", role:"Assistant Coach" },
+        ],
+        links: [
+          { label:"Page équipe (VLR)", href:"https://www.vlr.gg/team/12694/gentle-mates" }
+        ]
+      },
+      kc: {
+        name: "Karmine Corp",
+        league: "VCT EMEA 2026",
+        note: "Roster annoncé pour 2026.",
+        roster: [
+          { nick:"Avez", real:"Hazem Khaled", role:"" },
+          { nick:"SUYGETSU", real:"Dmitry Ilyushin", role:"" },
+          { nick:"LewN", real:"Burak Alkan", role:"" },
+          { nick:"sheydos", real:"Bogdan Naumov", role:"" },
+          { nick:"dos9", real:"Zhumagali Dastan", role:"" },
+        ],
+        staff: [
+          { nick:"ENGH", role:"Head Coach" },
+          { nick:"ZE1SH", role:"Coach" },
+        ],
+        links: [
+          { label:"Annonce roster (VLR)", href:"https://www.vlr.gg/591599/karmine-corp-officially-announces-2026-roster" }
+        ]
+      },
+      vit: {
+        name: "Team Vitality",
+        league: "VCT EMEA 2026",
+        note: "Groupe 6 joueurs (situation de stand-in possible selon âge/eligibility).",
+        roster: [
+          { nick:"Derke", real:"Nikita Sirmitev", role:"" },
+          { nick:"Jamppi", real:"Elias Olkkonen", role:"" },
+          { nick:"PROFEK", real:"Dawid Święć", role:"" },
+          { nick:"Chronicle", real:"Timofey Khromov", role:"" },
+          { nick:"Sayonara", real:"Ștefan Mîțcu", role:"" },
+          { nick:"UNFAKE", real:"Bartosz Bernacki", role:"Sub / stand-in" },
+        ],
+        staff: [
+          { nick:"PAL", role:"Coach" },
+          { nick:"Scuttt", role:"Coach" },
+        ],
+        links: [
+          { label:"Page équipe (VLR)", href:"https://www.vlr.gg/team/2059/team-vitality" },
+          { label:"Site Vitality (team)", href:"https://vitality.gg/en/pages/teams/valorant" }
+        ]
+      }
+    };
+
+    // ===== TIPS LIST =====
+    const tips = [
+      "Joue 2v2 : si ton mate peek, tu es prêt à trade.",
+      "Quand tu prends un site : smoke → flash/info → entry. Pas l’inverse.",
+      "En défense : donne de l’info puis retake à 3-4 plutôt que des 1v1.",
+      "Éco : si vous forcez, forcez ensemble. Si vous eco, eco ensemble.",
+      "En clutch : coupe le son, respire, joue le temps (tap, fake, reposition).",
+      "Crosshair placement > flicks. Mets-toi au bon niveau tout le temps."
+    ];
+    const tipsList = $("#tipsList");
+    tips.forEach(t => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>Tip</strong><span class="muted">${t}</span>`;
+      tipsList.appendChild(li);
+    });
+
+    // ===== PANELS NAV =====
+    const chips = $$(".chip");
+    const panels = $$(".panel");
+
+    function setPanel(id){
+      panels.forEach(p => p.classList.toggle("active", p.id === id));
+      chips.forEach(c => {
+        const isActive = c.dataset.panel === id;
+        c.classList.toggle("active", isActive);
+        c.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      // update hash
+      if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+      const title = $("#" + id)?.dataset?.title || "VALORANT • Hub";
+      document.title = `${title} • VALORANT Hub`;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    chips.forEach(btn => btn.addEventListener("click", () => setPanel(btn.dataset.panel)));
+
+    // Hash routing
+    function routeFromHash(){
+      const id = (location.hash || "#regles").replace("#","");
+      const exists = panels.some(p => p.id === id);
+      setPanel(exists ? id : "regles");
+    }
+    window.addEventListener("hashchange", routeFromHash);
+
+    // Shortcuts
+    $$(".tabbtn[data-jump]").forEach(b => b.addEventListener("click", ()=> setPanel(b.dataset.jump)));
+
+    // Copy link
+    $("#copyLinkBtn").addEventListener("click", async () => {
+      const activePanel = panels.find(p => p.classList.contains("active"))?.id || "regles";
+      const url = location.origin + location.pathname + "#" + activePanel;
+      try{
+        await navigator.clipboard.writeText(url);
+        showToast("Lien copié ✔");
+      }catch{
+        showToast("Impossible de copier (navigateur).");
+      }
+    });
+
+    // Theme toggle (tiny fun)
+    let neon = false;
+    $("#themeBtn").addEventListener("click", () => {
+      neon = !neon;
+      document.documentElement.style.setProperty("--accent", neon ? "#B6FF5C" : "#5CF2C2");
+      document.documentElement.style.setProperty("--valorant2", neon ? "#FFCC66" : "#FF7A84");
+      showToast(neon ? "Mode Neon activé" : "Mode Neon désactivé");
+    });
+
+    // Random tip
+    $("#randomTipBtn").addEventListener("click", () => {
+      const t = tips[Math.floor(Math.random() * tips.length)];
+      showToast(t);
+    });
+
+    // ===== TEAM TABS =====
+    const teamBtns = $$(".tabbtn[data-team]");
+    const teamBox = $("#teamBox");
+
+    function renderTeam(key){
+      const t = teamsData[key];
+      if(!t) return;
+
+      teamBtns.forEach(b => b.classList.toggle("active", b.dataset.team === key));
+
+      const rosterHtml = t.roster.map(p => {
+        const role = p.role ? `<span class="muted mono">${p.role}</span>` : `<span class="muted">—</span>`;
+        return `<li><strong>${p.nick}</strong><span class="muted">${p.real}</span>${role}</li>`;
+      }).join("");
+
+      const staffHtml = (t.staff && t.staff.length)
+        ? t.staff.map(s => `<li><strong>${s.nick}</strong><span class="muted">${s.role}</span></li>`).join("")
+        : `<li><strong>Staff</strong><span class="muted">Non renseigné</span></li>`;
+
+      const linksHtml = (t.links || []).map(l => {
+        return `<a class="btn" target="_blank" rel="noopener" href="${l.href}">${l.label}</a>`;
+      }).join(" ");
+
+      teamBox.innerHTML = `
+        <div class="teamhead">
+          <div>
+            <div class="teamname"><span class="badge"></span> ${t.name}</div>
+            <div class="muted" style="margin-top:6px;">
+              ${t.league} • ${t.note}
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">${linksHtml}</div>
+        </div>
+
+        <div class="grid3" style="margin-top:12px;">
+          <div class="subcard">
+            <b>Roster</b>
+            <ul class="list" style="margin-top:10px;">${rosterHtml}</ul>
+          </div>
+          <div class="subcard">
+            <b>Staff</b>
+            <ul class="list" style="margin-top:10px;">${staffHtml}</ul>
+          </div>
+          <div class="subcard">
+            <b>À compléter</b>
+            <ul class="list" style="margin-top:10px;">
+              <li><strong>Rôles en jeu</strong><span class="muted">IGL / entry / lurk / senti…</span></li>
+              <li><strong>Agents signature</strong><span class="muted">par joueur</span></li>
+              <li><strong>Map pool</strong><span class="muted">fortes / faibles</span></li>
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    teamBtns.forEach(b => b.addEventListener("click", () => renderTeam(b.dataset.team)));
+
+    // Init
+    renderTeam("g2m");
+    routeFromHash();
+  </script>
+</body>
+</html>
