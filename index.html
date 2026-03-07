@@ -25,6 +25,7 @@
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
@@ -39,6 +40,7 @@
 
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(1150px, 92vw); margin:0 auto; }
+
     .topbar{
       position:sticky; top:0; z-index:20;
       backdrop-filter: blur(12px);
@@ -57,6 +59,7 @@
       font-weight:900;
       letter-spacing:.3px;
     }
+
     .mark{
       width:34px; height:34px; border-radius:14px;
       background: linear-gradient(135deg, var(--valorant), var(--valorant2));
@@ -64,12 +67,14 @@
       position:relative;
       overflow:hidden;
     }
+
     .mark::after{
       content:"";
       position:absolute; inset:-30%;
       background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%);
       transform: rotate(18deg);
     }
+
     .brand small{
       display:block;
       margin-top:2px;
@@ -80,6 +85,7 @@
     }
 
     .nav-right{ display:flex; align-items:center; gap:10px; }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:10px 12px;
@@ -92,14 +98,21 @@
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+
     .btn.primary{
-      border: none;
+      border:none;
       background: linear-gradient(135deg, var(--valorant), var(--valorant2));
       color:#150609;
     }
 
     .chips{ display:flex; gap:10px; flex-wrap:wrap; }
+
     .chip{
       padding:8px 10px;
       border-radius:999px;
@@ -111,7 +124,13 @@
       cursor:pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+
+    .chip:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+
     .chip.active{
       color: var(--text);
       border-color: rgba(255,70,85,.45);
@@ -128,25 +147,52 @@
       align-items:stretch;
       margin-top:14px;
     }
-    @media (max-width: 950px){ .hero{ grid-template-columns:1fr; } }
+
+    @media (max-width: 950px){
+      .hero{ grid-template-columns:1fr; }
+    }
 
     .card{
+      position:relative;
       border:1px solid var(--border);
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .card-inner{ padding:20px; }
-    .subcard{
-      border:1px solid var(--border);
-      background: var(--card2);
-      border-radius: 16px;
-      padding:14px;
+      overflow: visible;
+      z-index:0;
     }
 
-    h1{ margin:0 0 10px; font-size: clamp(28px, 3.6vw, 44px); line-height:1.08; letter-spacing:-.5px; }
-    .lead{ margin:0 0 14px; color:var(--muted); line-height:1.65; font-size:16px; }
+    .card-inner{
+      position:relative;
+      z-index:2;
+      padding:20px;
+      border-radius: inherit;
+      background: transparent;
+    }
+
+    .subcard{
+      position:relative;
+      border:1px solid var(--border);
+      background: var(--card2);
+      border-radius:16px;
+      padding:14px;
+      overflow: visible;
+      z-index:0;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.5px;
+    }
+
+    .lead{
+      margin:0 0 14px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:16px;
+    }
 
     .kpis{
       display:grid;
@@ -154,29 +200,44 @@
       gap:10px;
       margin-top:12px;
     }
-    @media (max-width: 520px){ .kpis{ grid-template-columns:1fr; } }
+
+    @media (max-width: 520px){
+      .kpis{ grid-template-columns:1fr; }
+    }
+
     .kpi{
+      position:relative;
       border:1px solid var(--border);
       background: rgba(255,255,255,.03);
-      border-radius: 16px;
+      border-radius:16px;
       padding:12px;
+      overflow: visible;
+      z-index:0;
     }
+
     .kpi b{ display:block; font-size:16px; }
     .kpi span{ display:block; color:var(--muted); font-size:13px; margin-top:2px; }
 
-    .section{
-      margin-top:16px;
-    }
+    .section{ margin-top:16px; }
+
     .section-head{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap:10px; flex-wrap:wrap;
-      margin: 8px 0 12px;
+      margin:8px 0 12px;
     }
+
     .section-head h2{ margin:0; font-size:20px; letter-spacing:-.2px; }
     .section-head p{ margin:0; color:var(--muted); }
 
-    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; }
-    @media (max-width: 950px){ .grid3{ grid-template-columns:1fr; } }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+
+    @media (max-width: 950px){
+      .grid3{ grid-template-columns:1fr; }
+    }
 
     .tag{
       display:inline-flex; align-items:center; gap:8px;
@@ -188,6 +249,7 @@
       font-size:13px;
       font-weight:800;
     }
+
     .tag i{
       width:8px; height:8px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), rgba(255,255,255,.2));
@@ -202,9 +264,10 @@
       display:flex; gap:10px; flex-wrap:wrap;
       margin: 10px 0 0;
     }
+
     .tabbtn{
       padding:9px 10px;
-      border-radius: 14px;
+      border-radius:14px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.04);
       color: var(--muted);
@@ -212,7 +275,13 @@
       cursor:pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .tabbtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18); }
+
+    .tabbtn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+
     .tabbtn.active{
       color: var(--text);
       border-color: rgba(92,242,194,.40);
@@ -220,35 +289,47 @@
       box-shadow: 0 0 0 3px rgba(92,242,194,.10) inset;
     }
 
-    .list{ margin:10px 0 0; padding:0; list-style:none; }
+    .list{
+      margin:10px 0 0;
+      padding:0;
+      list-style:none;
+    }
+
     .list li{
       padding:10px 12px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.03);
-      border-radius: 14px;
+      border-radius:14px;
       margin-top:10px;
       display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
+
     .list strong{ font-weight:950; }
     .muted{ color: var(--muted); }
     .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
     .teamcard{
+      position:relative;
       border:1px solid var(--border);
       background: rgba(255,255,255,.04);
-      border-radius: 18px;
+      border-radius:18px;
       padding:16px;
+      overflow: visible;
+      z-index:0;
     }
+
     .teamhead{
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
       margin-bottom:10px;
     }
+
     .teamname{
       font-weight:1000;
       font-size:18px;
       letter-spacing:-.2px;
       display:flex; align-items:center; gap:10px;
     }
+
     .badge{
       width:12px; height:12px; border-radius:999px;
       background: linear-gradient(135deg, var(--valorant), var(--accent));
@@ -262,6 +343,7 @@
       color: var(--muted);
       font-size:13px;
     }
+
     .toast{
       position: fixed;
       left: 50%;
@@ -269,11 +351,120 @@
       transform: translateX(-50%);
       border:1px solid var(--border);
       background: rgba(10,14,24,.88);
-      padding: 10px 12px;
-      border-radius: 14px;
+      padding:10px 12px;
+      border-radius:14px;
       box-shadow: var(--shadow);
       display:none;
       z-index:999;
+    }
+
+    /* ===== RING NEON FIXE + LUMIERE QUI TOURNE ===== */
+
+    @property --spin-angle {
+      syntax: "<angle>";
+      inherits: false;
+      initial-value: 0deg;
+    }
+
+    @keyframes neonOrbit {
+      from { --spin-angle: 0deg; }
+      to   { --spin-angle: 360deg; }
+    }
+
+    .card,
+    .subcard,
+    .kpi,
+    .teamcard{
+      --ring-width: 2px;
+      --ring-radius: inherit;
+    }
+
+    /* contour RGB fixe */
+    body.neon-mode .card::before,
+    body.neon-mode .subcard::before,
+    body.neon-mode .kpi::before,
+    body.neon-mode .teamcard::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      padding:2px;
+      background: linear-gradient(
+        135deg,
+        #ff2d55,
+        #ff7a00,
+        #ffe600,
+        #38ff9c,
+        #00d9ff,
+        #5b7cff,
+        #b84dff,
+        #ff4db8
+      );
+      z-index:0;
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events:none;
+    }
+
+    /* lumière mobile uniquement sur le contour */
+    body.neon-mode .card::after,
+    body.neon-mode .subcard::after,
+    body.neon-mode .kpi::after,
+    body.neon-mode .teamcard::after{
+      content:"";
+      position:absolute;
+      inset:-4px;
+      border-radius:inherit;
+      padding:4px;
+      z-index:1;
+      pointer-events:none;
+      opacity:.95;
+
+      background:
+        conic-gradient(
+          from var(--spin-angle),
+          transparent 0deg,
+          transparent 300deg,
+          rgba(255,255,255,0) 320deg,
+          rgba(255,255,255,.95) 332deg,
+          rgba(0,229,255,.95) 340deg,
+          rgba(255,70,85,.95) 348deg,
+          rgba(255,255,255,0) 360deg
+        );
+
+      filter: blur(10px);
+      animation: neonOrbit 2.8s linear infinite;
+
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    /* léger boost général */
+    body.neon-mode .card,
+    body.neon-mode .subcard,
+    body.neon-mode .kpi,
+    body.neon-mode .teamcard{
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.03),
+        0 0 18px rgba(255,70,85,.08),
+        0 0 28px rgba(0,229,255,.07),
+        var(--shadow);
+    }
+
+    /* pour que l'intérieur reste clean au-dessus du contour */
+    .card > *,
+    .subcard > *,
+    .kpi > *,
+    .teamcard > *{
+      position:relative;
+      z-index:2;
     }
   </style>
 </head>
@@ -296,7 +487,6 @@
         </div>
       </div>
 
-      <!-- Catégories -->
       <div class="chips" role="tablist" aria-label="Catégories">
         <button class="chip active" data-panel="regles" role="tab" aria-selected="true">Règles du jeu</button>
         <button class="chip" data-panel="modes" role="tab" aria-selected="false">Modes</button>
@@ -369,10 +559,8 @@
       </div>
     </section>
 
-    <!-- PANELS -->
     <section class="section">
 
-      <!-- REGLES -->
       <div class="panel active" id="regles" data-title="Règles du jeu">
         <div class="section-head">
           <h2>Règles du jeu</h2>
@@ -403,7 +591,6 @@
         </ul>
       </div>
 
-      <!-- MODES -->
       <div class="panel" id="modes" data-title="Modes">
         <div class="section-head">
           <h2>Modes</h2>
@@ -431,7 +618,6 @@
         </ul>
       </div>
 
-      <!-- AGENTS -->
       <div class="panel" id="agents" data-title="Agents">
         <div class="section-head">
           <h2>Agents</h2>
@@ -439,26 +625,26 @@
         </div>
 
         <div class="grid3">
-  <div class="card"><div class="card-inner">
-    <b>Duelist</b>
-    <p class="lead">Créer l’espace : dash/entry, prendre le premier contact, casser les setups.</p>
-  </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Duelist</b>
+            <p class="lead">Créer l’espace : dash/entry, prendre le premier contact, casser les setups.</p>
+          </div></div>
 
-  <div class="card"><div class="card-inner">
-    <b>Initiator</b>
-    <p class="lead">Gagner l’info : flashes / reveals / drones pour aider l’entry.</p>
-  </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Initiator</b>
+            <p class="lead">Gagner l’info : flashes / reveals / drones pour aider l’entry.</p>
+          </div></div>
 
-  <div class="card"><div class="card-inner">
-    <b>Controller</b>
-    <p class="lead">Fumigènes : couper les lignes, contrôler la map, tempo en post-plant.</p>
-  </div></div>
+          <div class="card"><div class="card-inner">
+            <b>Controller</b>
+            <p class="lead">Fumigènes : couper les lignes, contrôler la map, tempo en post-plant.</p>
+          </div></div>
 
-  <div class="card"><div class="card-inner">
-    <b>Sentinel</b>
-    <p class="lead">Tenir un site : anti-flank, contrôle de zone, pièges, retake plus safe.</p>
-  </div></div>
-</div>
+          <div class="card"><div class="card-inner">
+            <b>Sentinel</b>
+            <p class="lead">Tenir un site : anti-flank, contrôle de zone, pièges, retake plus safe.</p>
+          </div></div>
+        </div>
 
         <div class="card" style="margin-top:12px;">
           <div class="card-inner">
@@ -473,7 +659,6 @@
         </div>
       </div>
 
-      <!-- MAPS -->
       <div class="panel" id="maps" data-title="Maps">
         <div class="section-head">
           <h2>Maps</h2>
@@ -506,7 +691,6 @@
         </div>
       </div>
 
-      <!-- TIPS -->
       <div class="panel" id="tips" data-title="Tips & Compo">
         <div class="section-head">
           <h2>Tips & Compo</h2>
@@ -531,7 +715,6 @@
         <ul class="list" id="tipsList"></ul>
       </div>
 
-      <!-- VCT 2026 -->
       <div class="panel" id="vct-2026" data-title="VCT EMEA 2026">
         <div class="section-head">
           <h2>VCT EMEA 2026 • Focus FR</h2>
@@ -554,9 +737,7 @@
               </div>
             </div>
 
-            <div class="teamcard" id="teamBox">
-              <!-- Injecté via JS -->
-            </div>
+            <div class="teamcard" id="teamBox"></div>
 
             <div class="subcard" style="margin-top:12px;">
               <b>Idées de contenu à ajouter</b>
@@ -593,7 +774,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // ===== UTIL =====
     const $ = (q, root=document) => root.querySelector(q);
     const $$ = (q, root=document) => Array.from(root.querySelectorAll(q));
 
@@ -605,11 +785,8 @@
       window.__toastT = setTimeout(()=> toast.style.display="none", 2200);
     }
 
-    // ===== YEAR =====
     $("#year").textContent = new Date().getFullYear();
 
-    // ===== DATA (ROSTERS) =====
-    // Modifie ici si le mercato change :
     const teamsData = {
       g2m: {
         name: "Gentle Mates",
@@ -672,7 +849,6 @@
       }
     };
 
-    // ===== TIPS LIST =====
     const tips = [
       "Joue 2v2 : si ton mate peek, tu es prêt à trade.",
       "Quand tu prends un site : smoke → flash/info → entry. Pas l’inverse.",
@@ -681,6 +857,7 @@
       "En clutch : coupe le son, respire, joue le temps (tap, fake, reposition).",
       "Crosshair placement > flicks. Mets-toi au bon niveau tout le temps."
     ];
+
     const tipsList = $("#tipsList");
     tips.forEach(t => {
       const li = document.createElement("li");
@@ -688,7 +865,6 @@
       tipsList.appendChild(li);
     });
 
-    // ===== PANELS NAV =====
     const chips = $$(".chip");
     const panels = $$(".panel");
 
@@ -700,7 +876,6 @@
         c.setAttribute("aria-selected", isActive ? "true" : "false");
       });
 
-      // update hash
       if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
       const title = $("#" + id)?.dataset?.title || "VALORANT • Hub";
       document.title = `${title} • VALORANT Hub`;
@@ -709,7 +884,6 @@
 
     chips.forEach(btn => btn.addEventListener("click", () => setPanel(btn.dataset.panel)));
 
-    // Hash routing
     function routeFromHash(){
       const id = (location.hash || "#regles").replace("#","");
       const exists = panels.some(p => p.id === id);
@@ -717,10 +891,8 @@
     }
     window.addEventListener("hashchange", routeFromHash);
 
-    // Shortcuts
     $$(".tabbtn[data-jump]").forEach(b => b.addEventListener("click", ()=> setPanel(b.dataset.jump)));
 
-    // Copy link
     $("#copyLinkBtn").addEventListener("click", async () => {
       const activePanel = panels.find(p => p.classList.contains("active"))?.id || "regles";
       const url = location.origin + location.pathname + "#" + activePanel;
@@ -732,22 +904,23 @@
       }
     });
 
-    // Theme toggle (tiny fun)
     let neon = false;
     $("#themeBtn").addEventListener("click", () => {
       neon = !neon;
+
       document.documentElement.style.setProperty("--accent", neon ? "#B6FF5C" : "#5CF2C2");
       document.documentElement.style.setProperty("--valorant2", neon ? "#FFCC66" : "#FF7A84");
+
+      document.body.classList.toggle("neon-mode", neon);
+
       showToast(neon ? "Mode Neon activé" : "Mode Neon désactivé");
     });
 
-    // Random tip
     $("#randomTipBtn").addEventListener("click", () => {
       const t = tips[Math.floor(Math.random() * tips.length)];
       showToast(t);
     });
 
-    // ===== TEAM TABS =====
     const teamBtns = $$(".tabbtn[data-team]");
     const teamBox = $("#teamBox");
 
@@ -804,7 +977,6 @@
 
     teamBtns.forEach(b => b.addEventListener("click", () => renderTeam(b.dataset.team)));
 
-    // Init
     renderTeam("g2m");
     routeFromHash();
   </script>
