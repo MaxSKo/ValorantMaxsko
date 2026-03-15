@@ -482,10 +482,15 @@
         </div>
 
         <div class="nav-right">
-          <button class="btn" id="copyLinkBtn" title="Copier un lien vers la catégorie">Copier lien</button>
-          <a class="btn primary" href="#vct-2026" title="Aller à VCT 2026">VCT 2026</a>
-        </div>
-      </div>
+
+  <div class="btn">
+    👁️ <span id="visitCount">0</span>
+  </div>
+
+  <button class="btn" id="copyLinkBtn" title="Copier un lien vers la catégorie">Copier lien</button>
+  <a class="btn primary" href="#vct-2026" title="Aller à VCT 2026">VCT 2026</a>
+
+</div>
 
       <div class="chips" role="tablist" aria-label="Catégories">
         <button class="chip active" data-panel="regles" role="tab" aria-selected="true">Règles du jeu</button>
@@ -979,6 +984,22 @@
 
     renderTeam("g2m");
     routeFromHash();
+/* ===== Compteur de visites ===== */
+
+let visits = localStorage.getItem("valorant_visits");
+
+if(!visits){
+  visits = 1;
+}else{
+  visits = parseInt(visits) + 1;
+}
+
+localStorage.setItem("valorant_visits", visits);
+
+const counter = document.getElementById("visitCount");
+if(counter){
+  counter.textContent = visits;
+}
   </script>
 </body>
 </html>
